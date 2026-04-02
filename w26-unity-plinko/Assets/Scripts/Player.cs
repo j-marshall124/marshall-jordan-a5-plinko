@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         // Move player horizontally
         float moveX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         Vector3 position = transform.position;
-        position.x = moveX;
+        position.x += moveX;
         transform.position = position;
 
         // Drop disc
