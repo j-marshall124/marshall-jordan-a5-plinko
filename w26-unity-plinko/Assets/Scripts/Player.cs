@@ -17,10 +17,13 @@ public class Player : MonoBehaviour
         Vector3 position = transform.position;
         position.x += moveX;
         position.x = Mathf.Clamp(position.x,-maxHorizontalX, +maxHorizontalX);
-        transform.position = position;
+        transform.position = position;        
+    }
 
+    void Update()
+    {
         // Drop disc
-        if(Input.GetKeyDown(KeyCode.Space) && currentDisc == null)
+        if (Input.GetKeyDown(KeyCode.Space) && currentDisc == null)
         {
             // Clone prefab
             currentDisc = Instantiate(discPrefab, transform.position, Quaternion.identity);
