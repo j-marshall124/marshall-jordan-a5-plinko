@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public Sprite noDisc;
     public Sprite haveDisc;
     private SpriteRenderer spriteRenderer;
+    public DiscsAvailable discsAvailable;
+    public GameOver gameOver;
 
     void Start()
     {
@@ -29,18 +31,30 @@ public class Player : MonoBehaviour
 
     void Update()
     {        
-        // Drop disc
-        if (Input.GetKeyDown(KeyCode.Space) && currentDisc == null)
+        if (discsAvailable.currentDiscs > 0) // If there are discs available
         {
-            // Clone prefab
-            currentDisc = Instantiate(discPrefab, transform.position, Quaternion.identity);
-            spriteRenderer.sprite = noDisc;
-            // Set camera to follow this
-            cameraFollow.FollowTarget(currentDisc.transform);
+            // Drop disc
+            if (Input.GetKeyDown(KeyCode.Space) && currentDisc == null)
+            {
+                // Clone prefab
+                currentDisc = Instantiate(discPrefab, transform.position, Quaternion.identity);
+                spriteRenderer.sprite = noDisc;
+                // Set camera to follow this
+                cameraFollow.FollowTarget(currentDisc.transform);
+
+                gameObject.GetComponent<DiscsAvailable>().NumberOfDiscs(-1); // Remove one available disc
+            }
+            else if (currentDisc == null)
+            {
+                spriteRenderer.sprite = haveDisc;
+            }
         }
-        else if (currentDisc == null)
+        else if (discsAvailable.currentDiscs <= 0) // If no discs are available
         {
-            spriteRenderer.sprite = haveDisc;
+            if (currentDisc == null)
+            {
+                gameOver.isGameOver = true; // Game Over screen
+            }
         }
     }
 }

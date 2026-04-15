@@ -21,6 +21,7 @@ public class Peg : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Checks level for each peg
         if (collision.gameObject.CompareTag("Disc"))
         {
             if (spriteRenderer.sprite == unlitPeg)
