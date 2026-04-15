@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4208485599055768060}
   - component: {fileID: 6954598279653071170}
   - component: {fileID: -4708816508088373136}
-  - component: {fileID: 8606780695410555655}
   m_Layer: 0
   m_Name: Disc
   m_TagString: Disc
@@ -157,18 +156,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &8606780695410555655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4162841314622922260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9ebafdea3276a34da7d6b19c3f0103d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bumper
-  discRigidbody: {fileID: 6954598279653071170}
-  magnitude: 5
-  forceMode: 1
